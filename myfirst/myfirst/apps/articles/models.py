@@ -16,6 +16,10 @@ class Article(models.Model):
     def was_published_recently(self):
         return self.pub_date >= (timezone.now() - datetime.timedelta(days = 7))
 
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
@@ -24,3 +28,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.autor_name
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
