@@ -4,7 +4,11 @@ from django.db import models
 
 
 class Article(models.Model):
-    pass
+    article_titles = models.CharField('название статьи', max_length = 200)
+    article_text = models.TextField('текст статьи')
+    pub_date = models.DateTimeField('дата публикации')
 
 class Comment(models.Model):
-    pass
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    autor_name = models.CharField('имя автора', max_length=50)
+    comment_text = models.CharField('текст комментария', max_length=200)
