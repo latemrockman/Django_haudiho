@@ -5,6 +5,19 @@
 
 {% block content %}
 
-Тут будет находиться список статей
+<b>Список статей:</b> <br>
+
+
+{% if all_articles %}
+
+    {% for article in all_articles %}
+        <a href="">[{{article.pub_date}}] - {{article}}</a> <br>
+    {% endfor %}
+
+{% else %}
+    Статьи не найдены...
+
+{% endif %}
+
 
 {% endblock %}
