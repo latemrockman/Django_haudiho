@@ -10,13 +10,18 @@ def index(request):
 
 
 def article_page(request, article_id):
+    comments = Comment.objects.all()
+
     try:
-        article = Article.objects.get( id=article_id)
+        article = Article.objects.get(id=article_id)
+
     except:
         raise Http404('Статья не найтена')
 
-    return render(request, 'articles/article_page.html', {'article': article, 'article_id': article_id})
+    return render(request, 'articles/article_page.html', {'article': article, 'comments': comments})
 
+def leave_comment(request, article_id):
+    pass
 
 #article_titles
 #article_text =

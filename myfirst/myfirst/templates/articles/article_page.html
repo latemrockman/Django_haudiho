@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Статья ##### {% endblock %}
+{% block title %} {{article.article_titles}} {% endblock %}
 
 
 {% block content %}
@@ -9,8 +9,19 @@
 
 <b>{{article.article_titles}}</b> <br>
 <p>{{article.article_text}}</p> <br>
-{{article.pub_date}} <br>
+<em>{{article.pub_date}}</em> <br>
+<hr>
+<b>Комментарии:</b> <br>
+<p>Тут будут комментарии...</p> <br>
 
+
+{% for comment in comments%}
+    <b>{{comment.autor_name}} - {{comment.article}} --- {{comment.id}}</b> <br>
+    <i>{{comment.comment_text}}</i> <br>
+{% endfor %}
+
+
+<br>
 
 <a href="{% url 'articles:index' %}">Вернуться на главную</a>
 
