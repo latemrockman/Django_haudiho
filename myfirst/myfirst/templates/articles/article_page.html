@@ -11,9 +11,20 @@
 <p>{{article.article_text}}</p> <br>
 <em>{{article.pub_date}}</em> <br>
 <hr>
-<b>Комментарии:</b> <br>
-<p>Тут будут комментарии...</p> <br>
 
+<form action="" method="POST">
+
+    <input type="text" placeholder="Ваше имя" name="name" cols="30"> <br><br>
+    <textarea name="text" placeholder="Текст комментария" cols="30" rows="10"></textarea> <br><br>
+    <button type="submit">Оставить комментарий</button> <br><br>
+
+
+
+</form>
+
+
+<b>Комментарии:</b> <br>
+<br>
 
 {% for comment in comments%}
     <b>{{comment.autor_name}} - {{comment.article}} --- {{comment.id}}</b> <br>

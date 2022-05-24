@@ -5,7 +5,7 @@ from .models import Article, Comment
 # Create your views here.
 
 def index(request):
-    latest_articles_list = Article.objects.order_by('-pub_date')[:5]
+    latest_articles_list = Article.objects.order_by('-pub_date')[:10]
     return render(request, 'articles/list.html', {'all_articles': latest_articles_list})
 
 
