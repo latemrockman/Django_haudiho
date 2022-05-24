@@ -14,7 +14,7 @@ class Article(models.Model):
         return self.article_titles
 
     def was_published_recently(self):
-        return self.pub_date >= (timezone.now() - datetime.timedelta(days = 7))
+        return self.pub_date >= (timezone.now() - datetime.timedelta(days = 22))
 
     class Meta:
         verbose_name = 'Статья'

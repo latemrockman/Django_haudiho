@@ -7,34 +7,47 @@
 
 
 
-<b>{{article.article_titles}}</b> <br>
+
+
+<h2>{{article.article_titles}}</h2>
+
+{% if article.was_published_recently %}
+(new!)
+{% endif %}
+
 <p>{{article.article_text}}</p> <br>
 <em>{{article.pub_date}}</em> <br>
 <hr>
 
-<form action="" method="POST">
+<a href="{% url 'articles:index' %}">Вернуться на главную</a>  <br> <br>
+<h2>Комментарии:</h2>
 
-    <input type="text" placeholder="Ваше имя" name="name" cols="30"> <br><br>
-    <textarea name="text" placeholder="Текст комментария" cols="30" rows="10"></textarea> <br><br>
-    <button type="submit">Оставить комментарий</button> <br><br>
+{% if comments %}
+
+{% for comment in comments%}
+    <b>{{comment.autor_name}}</b> <br>
+    <i>{{comment.comment_text}}</i> <br>
+{% endfor %}
+<br>
+
+{% else %}
+<p>Комментарии не найдены... Станьте первым!</p>
+
+{% endif %}
 
 
 
+
+<form action="{% url 'articles:leave-comment' article.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" required placeholder="Ваше имя" name="name"> <br><br>
+    <textarea name="text" required="" placeholder="Текст комментария" cols="30" rows="10"></textarea> <br><br>
+    <button type="submit">Оставить комментарий</button>
 </form>
 
 
-<b>Комментарии:</b> <br>
-<br>
-
-{% for comment in comments%}
-    <b>{{comment.autor_name}} - {{comment.article}} --- {{comment.id}}</b> <br>
-    <i>{{comment.comment_text}}</i> <br>
-{% endfor %}
 
 
-<br>
-
-<a href="{% url 'articles:index' %}">Вернуться на главную</a>
 
 
 
