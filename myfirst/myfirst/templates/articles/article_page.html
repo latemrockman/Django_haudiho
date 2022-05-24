@@ -5,8 +5,16 @@
 
 {% block content %}
 
-<b>Название статьи</b> <br>
-Текст статьи
+
+
+<b>{{article.article_titles}}</b> <br>
+<p>{{article.article_text}}</p> <br>
+{{article.pub_date}} <br>
+
+
+<a href="{% url 'articles:index' %}">Вернуться на главную</a>
+
+
 
 
 
